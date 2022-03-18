@@ -1,0 +1,18 @@
+package composite.laiteosat;
+
+public class Prosessori implements Laiteosa {
+
+    private int hinta;
+
+    public Prosessori(int hinta) {
+        this.hinta = hinta;
+    }
+
+    public int getHinta() {
+        return hinta;
+    }
+
+    public void addLaiteosa(Laiteosa laiteosa) {
+        throw new RuntimeException("Cannot add a component to Prosessori");
+    }
+}
