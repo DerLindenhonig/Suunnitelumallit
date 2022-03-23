@@ -1,7 +1,7 @@
 package decorator;
 
-public class WithAnanas extends PizzaDecorator {
-    public WithAnanas(Pizza pizza) {
+public class WithHam extends PizzaDecorator {
+    public WithHam(Pizza pizza) {
         super(pizza);
     }
 
@@ -12,6 +12,6 @@ public class WithAnanas extends PizzaDecorator {
 
     @Override
     public String getIngredients() {
-        return super.getIngredients() + ", ananas";
+        return super.getIngredients() + ", kinkku";
     }
 }

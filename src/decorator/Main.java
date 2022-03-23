@@ -9,7 +9,16 @@ public class Main {
         Pizza pizza = new SimplePizza();
         print(pizza);
 
-        Pizza pizza2 = new WithAnanas(pizza);
-        print(pizza2);
+        Pizza pizzaWithPineapple = new WithPineapple(pizza);
+        print(pizzaWithPineapple);
+
+        Pizza pizzaWithHam = new WithHam(pizzaWithPineapple);
+        print(pizzaWithHam);
+
+        Pizza pizzaWithSalami2 = new WithSalami(pizzaWithPineapple);
+        print(pizzaWithSalami2);
+
+        Pizza pizzaWithSalami = new WithSalami(pizzaWithHam);
+        print(pizzaWithSalami);
     }
 }
