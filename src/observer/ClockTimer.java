@@ -1,15 +1,18 @@
 package observer;
 
+import java.time.LocalTime;
+
 public class ClockTimer extends Subject implements Runnable {
 
     int hour;
     int minute;
     int second;
+    LocalTime time = LocalTime.now();
 
     public ClockTimer() {
-        this.hour = 0;
-        this.minute = 0;
-        this.second = 0;
+        this.hour = time.getHour();
+        this.minute = time.getMinute();
+        this.second = time.getSecond();
     }
 
     public int getHour(){

@@ -1,5 +1,6 @@
 package observer2;
 
+import java.time.LocalTime;
 import java.util.Observable;
 
 public class ClockTimer extends Observable implements Runnable {
@@ -7,11 +8,12 @@ public class ClockTimer extends Observable implements Runnable {
     int hour;
     int minute;
     int second;
+    LocalTime time = LocalTime.now();
 
     public ClockTimer() {
-        this.hour = 0;
-        this.minute = 0;
-        this.second = 0;
+        this.hour = time.getHour();
+        this.minute = time.getMinute();
+        this.second = time.getSecond();
     }
 
     public int getHour(){
