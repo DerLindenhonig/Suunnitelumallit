@@ -1,4 +1,4 @@
-package stack;
+package tietorakenteet_ja_algoritmit.stack;
 
 /**
  * <p>Title: </p>

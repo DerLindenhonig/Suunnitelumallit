@@ -1,4 +1,4 @@
-package jono;
+package tietorakenteet_ja_algoritmit.stacklinkedlist;
 
 /**
  * <p>Title: </p>
@@ -23,7 +23,7 @@ public class Menu {
 //printMenu alkaa------------------------------------------------------------------
     private static void printMenu() {
         char select;
-        Queue s = new Queue();  // pino-olio
+        Stack s = new Stack();  // pino-olio
         String data;            // Pinon data-kenttä
         do {
 
@@ -41,13 +41,14 @@ public class Menu {
                     s.push(data);
                     break;
                 case '2':
-                    ListItem item = s.pop();
+                    String item = s.pop();
                     if (item == null)
                         System.out.println("Pino on tyhjä");
                     else
-                        System.out.println("Poistettu alkio: "+item.getmData());
+                        System.out.println("Poistettu alkio: "+item);
                     break;
                 case '3':
+                    System.out.println("Pino:");
                     s.printItems();
                     break;
                 case '4':

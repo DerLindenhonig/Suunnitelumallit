@@ -1,4 +1,4 @@
-package stacklinkedlist;
+package tietorakenteet_ja_algoritmit.jono;
 
 //---------------------------------------------------------------
 // Arto Wikla: Ohjelmoinnin perusteet Java-kielellä, OtaDATA 1998

@@ -1,4 +1,4 @@
-/*package stacklinkedlist;
+package tietorakenteet_ja_algoritmit.jono;
 
 public class ListItem {
     private String mData;
@@ -21,4 +21,4 @@ public class ListItem {
     public ListItem getmNext() {
         return mNext;
     }
-}*/
+}

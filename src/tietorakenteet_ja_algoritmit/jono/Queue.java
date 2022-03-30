@@ -1,11 +1,14 @@
-package stack;
+package tietorakenteet_ja_algoritmit.jono;
 
-public class Stack {
+public class Queue {
     private ListItem mTop;
+    private ListItem head;
+    private ListItem tail;
     private int mSize;
 
-    public Stack() {
-        mTop = null;
+    public Queue() {
+        head = null;
+        tail = null;
         mSize = 0;
     }
 
@@ -13,17 +16,22 @@ public class Stack {
     void push(String mData) {
         ListItem item = new ListItem();
         item.setmData(mData);
-        item.setmNext(mTop);
-        mTop = item;
+        if(head == null) {
+            head = item;
+        }
+        if(tail != null) {
+            tail.setmNext(item);
+        }
+        tail = item;
         mSize++;
     }
 
     // Poistetaan ja palautetaan alkio pinon huipulta
     // jos pino on tyhjä palautetaan null
     public ListItem pop() {
-        if(mTop != null) {
-            ListItem deletedItem = mTop;
-            mTop = mTop.getmNext();
+        if(head != null) {
+            ListItem deletedItem = head;
+            head = head.getmNext();
             mSize--;
             return deletedItem;
         }
@@ -33,7 +41,7 @@ public class Stack {
 
     // Tulostaa pinon muuttamatta pinoa
     public void printItems() {
-        ListItem item = mTop;
+        ListItem item = head;
         while (item != null) {
             System.out.println(item.getmData());
             item = item.getmNext();

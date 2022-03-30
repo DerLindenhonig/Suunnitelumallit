@@ -1,4 +1,4 @@
-package stack;
+package tietorakenteet_ja_algoritmit.stack;
 
 public class ListItem {
     private String mData;

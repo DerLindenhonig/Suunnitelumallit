@@ -1,4 +1,4 @@
-package stacklinkedlist;
+package tietorakenteet_ja_algoritmit.stacklinkedlist;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -18,15 +18,18 @@ public class Stack {
     // Poistetaan ja palautetaan alkio pinon huipulta
     // jos pino on tyhjä palautetaan null
     public String pop() {
-        list.pop();
-        return null;
+        if(list.size() == 0) {
+            return null;
+        } else {
+            return list.removeLast();
+        }
     }
 
     // Tulostaa pinon muuttamatta pinoa
     public void printItems() {
-        Iterator i = list.iterator();
+        Iterator i = list.descendingIterator();
         while(i.hasNext()) {
-            System.out.println(i.hasNext());
+            System.out.println(i.next());
         }
     }
 

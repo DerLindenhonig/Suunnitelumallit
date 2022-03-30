@@ -1,13 +1,11 @@
-package jono;
+package tietorakenteet_ja_algoritmit.stack;
 
 //---------------------------------------------------------------
 // Arto Wikla: Ohjelmoinnin perusteet Java-kielellä, OtaDATA 1998
 //---------------------------------------------------------------
 
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
+import java.io.*;
 public class Lue {
     /*************************************** Arto Wikla 1998**********
 
