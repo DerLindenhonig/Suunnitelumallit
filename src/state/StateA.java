@@ -10,6 +10,7 @@ public class StateA extends State {
         }
         return instance;
     }
+
     public String getState() {
         return "Scorbunny";
     }
