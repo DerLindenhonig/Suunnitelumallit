@@ -28,6 +28,7 @@ public class Hangman extends Game {
         /* Sattunainen kirjain */
         int rand = (int)(Math.random()*(27-0+1));
 
+        /* Ei otetaan samat kirjaimet uudestaan */
         while(randNumbers.contains(rand)) {
             rand = (int)(Math.random()*(27-0+1));
         }
