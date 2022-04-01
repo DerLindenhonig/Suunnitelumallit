@@ -1,16 +1,19 @@
 package templatemethod;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class Hangman extends Game {
     private int playersCount;
-    private String inventedWord = "kissa";
-    private char[] inventedLetters;
-    private ArrayList guessedLetters = new ArrayList();
-    private char[] alphabet = "abcdefghijklmnopqrstuvwxyzöä".toCharArray();
+    private String inventedWord = "suunnittelumallit";                          // piirtäjän keksitty sana
+    private char[] inventedLetters;                                             // piirtäjän keksitty sana char taulussa
+    private ArrayList guessedLetters = new ArrayList();                         // kirjaimet, jotka arvaaja arvasi oikein
+    private ArrayList wrongLetters = new ArrayList();                           // kirjaimet, jotka arvaaja arvasi väärin
+    private char[] alphabet = "abcdefghijklmnopqrstuvwxyzöä".toCharArray();     // kirjaimet, jotkaa saa käyttää pelissä
     private ArrayList randNumbers = new ArrayList();
     private int round = 0;
-    private final int maxRound = 20;
+    private final int maxRound = 19;
     private String winner;
 
     void initializeGame() {
@@ -26,9 +29,13 @@ public class Hangman extends Game {
     }
 
     boolean endOfGame() {
-        round++;
-        if(round == maxRound || guessedLetters.size() == inventedWord.length()-1) {
-            if (guessedLetters.size() == inventedWord.length()-1) {
+        String noDuplicatesLetters = Arrays.asList(inventedWord.split(""))
+                .stream()
+                .distinct()
+                .collect(Collectors.joining());
+
+        if(wrongLetters.size() == maxRound || noDuplicatesLetters.length() == guessedLetters.size()) {
+            if (noDuplicatesLetters.length() == guessedLetters.size()) {
                 winner = "\nArvaaja voittaa";
             } else {
                 winner = "\nPiirtäjä voittaa";
@@ -40,18 +47,14 @@ public class Hangman extends Game {
     }
 
     void printWinner() {
-        System.out.print("\n----------------------------");
-        System.out.println("\n----------------------------");
-        System.out.print("PELI LOPPUI");
+        System.out.print("\n\nPELI LOPPUI");
         System.out.println(winner);
     }
 
     private void updateScreen() {
-        System.out.println(
-                "\n\nHIRSIPUU: " + (round+1) + "/" + maxRound +
-                        "\nSana:");
+        System.out.println("\n\nHIRSIPUU: " + "\nVäärät kirjaimet: " + wrongLetters + "\nKeksitty sana:");
 
-        /* Kirjoittaa keksityn sanan. Jos kirjainta ei löydy, kirjoittaa "_" merkin. */
+        /* Kirjoittaa keksityn sanan. Jos arvaaja ei arvannut kirjainta vielä, kirjoittaa "_" merkin sen sijään. */
         int i = 0;
         while(i < inventedLetters.length){
             boolean guessed = false;
@@ -95,6 +98,7 @@ public class Hangman extends Game {
             System.out.println("Piirtäjä sanoo: Oikein!");
         } else {
             System.out.println("Piirtäjä sanoo: Väärin!");
+            wrongLetters.add(alphabet[rand]);
         }
     }
 }
