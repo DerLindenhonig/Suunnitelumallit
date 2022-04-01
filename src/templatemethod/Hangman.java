@@ -4,30 +4,51 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
+/** Pelin idea: Piirtäjä keksii sanan. Arvaajat yrittävät arvata sanan. Arvaaja, joka saa sanan selville voittaa. */
+
 public class Hangman extends Game {
-    private int playersCount;
     private String inventedWord = "suunnittelumallit";                          // piirtäjän keksitty sana
     private char[] inventedLetters;                                             // piirtäjän keksitty sana char taulussa
     private ArrayList guessedLetters = new ArrayList();                         // kirjaimet, jotka arvaaja arvasi oikein
     private ArrayList wrongLetters = new ArrayList();                           // kirjaimet, jotka arvaaja arvasi väärin
     private char[] alphabet = "abcdefghijklmnopqrstuvwxyzöä".toCharArray();     // kirjaimet, jotkaa saa käyttää pelissä
     private ArrayList randNumbers = new ArrayList();
-    private int round = 0;
-    private final int maxRound = 19;
+    private final int maxRound = 18;
     private String winner;
+    private int winnerPlayer;
 
+    @Override
     void initializeGame() {
-        playersCount = 2;
-        round = 0;
         makeWordArray();
         updateScreen();
     }
 
+    @Override
     void makePlay(int player) {
-        giveLetter();
+        /* Sattunainen kirjain */
+        int rand = (int)(Math.random()*(27-0+1));
+
+        while(randNumbers.contains(rand)) {
+            rand = (int)(Math.random()*(27-0+1));
+        }
+
+        System.out.println("\n\nArvaaja " + (player+1) + " ehdottaa: " + alphabet[rand]);
+        randNumbers.add(rand);
+
+        /* Tarkistaa, löytyykö kirjain sanasta */
+        if (inventedWord.contains(Character.toString(alphabet[rand]))) {
+            guessedLetters.add(alphabet[rand]);
+            winnerPlayer = (player+1);
+            System.out.println("Piirtäjä sanoo: Oikein!");
+        } else {
+            System.out.println("Piirtäjä sanoo: Väärin!");
+            wrongLetters.add(alphabet[rand]);
+        }
+
         updateScreen();
     }
 
+    @Override
     boolean endOfGame() {
         String noDuplicatesLetters = Arrays.asList(inventedWord.split(""))
                 .stream()
@@ -36,9 +57,9 @@ public class Hangman extends Game {
 
         if(wrongLetters.size() == maxRound || noDuplicatesLetters.length() == guessedLetters.size()) {
             if (noDuplicatesLetters.length() == guessedLetters.size()) {
-                winner = "\nArvaaja voittaa";
+                winner = "\nArvaaja " + winnerPlayer + " arvasi sanan!";
             } else {
-                winner = "\nPiirtäjä voittaa";
+                winner = "\nPiirtäjä voittaa!";
             }
             return true;
         } else {
@@ -46,6 +67,7 @@ public class Hangman extends Game {
         }
     }
 
+    @Override
     void printWinner() {
         System.out.print("\n\nPELI LOPPUI");
         System.out.println(winner);
@@ -78,27 +100,6 @@ public class Hangman extends Game {
         inventedLetters = new char[inventedWord.length()];
         for(int i=0; i<inventedWord.length(); i++) {
             inventedLetters[i] = inventedWord.charAt(i);
-        }
-    }
-
-    private void giveLetter() {
-        /* Sattunainen kirjain */
-        int rand = (int)(Math.random()*(27-0+1));
-
-        while(randNumbers.contains(rand)) {
-            rand = (int)(Math.random()*(27-0+1));
-        }
-
-        System.out.println("\n\nArvaaja ehdottaa: " + alphabet[rand]);
-        randNumbers.add(rand);
-
-        /* Tarkistaa, löytyykö kirjain sanasta */
-        if (inventedWord.contains(Character.toString(alphabet[rand]))) {
-            guessedLetters.add(alphabet[rand]);
-            System.out.println("Piirtäjä sanoo: Oikein!");
-        } else {
-            System.out.println("Piirtäjä sanoo: Väärin!");
-            wrongLetters.add(alphabet[rand]);
         }
     }
 }
