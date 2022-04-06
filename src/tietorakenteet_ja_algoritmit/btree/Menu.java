@@ -24,7 +24,7 @@ public class Menu {
                 String data;
                 do {
 
-                        System.out.println("\n\t\t\t1. Lisää uusi juuri/solmu.");
+                        System.out.println("\n\t\t\t1. Lisää uusi juuri/solmu."); // Lisää avain
                         System.out.println("\t\t\t2. Päivitä uusi solmu.");
                         System.out.println("\t\t\t3. Käy puu läpi esijärjestyksessä.");
                         System.out.println("\t\t\t4. Etsi solmu avaimella ");
@@ -33,7 +33,7 @@ public class Menu {
                         select = Lue.merkki();
                         switch (select) {
                         case '1':
-                            System.out.println("Anna juuren sisältö (merkkijono)");
+                            System.out.println("Anna juuren/solmun sisältö (merkkijono)");
                             data = new String(Lue.rivi());
                             if(tree == null) {
                                 tree = new BinaryTree(data);
@@ -79,7 +79,7 @@ public class Menu {
                             break;
                         }
                 }
-                while (select != '4');
+                while (select != '5');
         }
 //printMenu loppuu ----------------------------------------------------------------
 }

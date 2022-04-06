@@ -11,9 +11,6 @@ package tietorakenteet_ja_algoritmit.btree;
  *  Lapsisolmuja kutsutaan nimillä vasen ja oikea.
  *  Solmua, jolla ei ole yhtään lapsisolmua kutsutaan lehdeksi (leave).
  *
- *  Käytetään etsimiseen (searching) ja lajitteluun (sorting),
- *  koska ne tarjoavat keinon tallentaa tietoja hierarkkisesti.
- *
  * @author kamaj
  */
 public class BinaryTree {
@@ -33,12 +30,12 @@ public class BinaryTree {
         if(Integer.parseInt(root.getData()) == key) {
             return new BinaryTree(root.getData());
 
-        } else if(Integer.parseInt(root.getData()) < key) {
+        } else if(Integer.parseInt(root.getData()) > key) {
             if(root.left() == null) {
                 return null;
             } else return root.left().search(key);
 
-        } else if(Integer.parseInt(root.getData()) >= key) {
+        } else if(Integer.parseInt(root.getData()) < key) {
             if(root.right() == null) {
                 return null;
             } else return root.right().search(key);
@@ -67,9 +64,16 @@ public class BinaryTree {
         }
     }
 
+    public Node delete() {
+        if(root == null)
+            return null;
+
+        return null;
+    }
+
     public void preOrder() {
         if (root != null) {
-            System.out.println(root.getData()+',');
+            System.out.print(root.getData()+',');
             if (root.left() != null) // pääseekö vasemmalle?
                 root.left().preOrder();
             if (root.right() != null) // pääseekö oikealle?
