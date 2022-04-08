@@ -11,5 +11,5 @@ abstract class State {
     void changeState(Character c, State s) {
         c.changeState(s);
     }
-    void accept(IVisitor v) {};
+    void accept(IVisitor v) {}
 }
