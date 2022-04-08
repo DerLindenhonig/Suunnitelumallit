@@ -55,7 +55,7 @@ public class BinaryTree {
             } else {
                 root.setLeft(new BinaryTree(key));
             }
-        } else if(Integer.parseInt(key) >= Integer.parseInt(root.getData())) {
+        } else if(Integer.parseInt(key) > Integer.parseInt(root.getData())) {
             if(root.right() != null) {
                 root.right().insert(key);
             } else {
