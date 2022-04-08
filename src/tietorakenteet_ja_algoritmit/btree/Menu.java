@@ -28,7 +28,8 @@ public class Menu {
                         System.out.println("\t\t\t2. Päivitä uusi solmu.");
                         System.out.println("\t\t\t3. Käy puu läpi esijärjestyksessä.");
                         System.out.println("\t\t\t4. Etsi solmu avaimella ");
-                        System.out.println("\t\t\t5. lopetus ");
+                        System.out.println("\t\t\t5. Poista solmu avaimella ");
+                        System.out.println("\t\t\t6. lopetus ");
                         System.out.print("\n\n"); // tehdään tyhjiä rivejä
                         select = Lue.merkki();
                         switch (select) {
@@ -76,10 +77,14 @@ public class Menu {
                                 System.out.println("Avain " + data + " löytyy");
                             } else System.out.println("Avainta " + data + " ei löydy");
                         case '5':
+                            System.out.println("Anna poistuvan solmun avain (merkkijono)");
+                            data = Lue.rivi();
+                            tree.delete(Integer.parseInt(data));
+                        case '6':
                             break;
                         }
                 }
-                while (select != '5');
+                while (select != '6');
         }
 //printMenu loppuu ----------------------------------------------------------------
 }

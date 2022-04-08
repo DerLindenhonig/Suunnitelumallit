@@ -64,11 +64,49 @@ public class BinaryTree {
         }
     }
 
-    public Node delete() {
+    public BinaryTree delete(int key) {
+        /* Tree is empty */
         if(root == null)
             return null;
-
+        /* Moves left */
+        if(Integer.parseInt(root.getData()) > key) {
+            root.left().delete(key);
+        }
+        /* Moves right */
+        else if(Integer.parseInt(root.getData()) < key) {
+            root.right().delete(key);
+        }
+        /* Found the target */
+        else {
+            /* Remove leave from the tree */
+            if(root.left() == null && root.right() == null) {
+                root = null;
+            }
+            /* The node has two children: delete the largest value */
+            else if(root.left() != null && root.right() != null) {
+                BinaryTree predecessor = maxValue(root.left());
+                root.setData(predecessor.root.getData());
+                root.setLeft(delete(Integer.parseInt(predecessor.root.getData())));
+            }
+            /* The node has one child */
+            else {
+                BinaryTree btree;
+                if(root.left() != null) {
+                    btree = root.left();
+                } else {
+                    btree = root.right();
+                }
+                root = btree.root;
+            }
+        }
         return null;
+    }
+
+    private BinaryTree maxValue(BinaryTree btree){
+        while(btree.root.left() != null){
+            btree = btree.root.left();
+        }
+        return btree;
     }
 
     public void preOrder() {

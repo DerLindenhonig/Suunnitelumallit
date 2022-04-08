@@ -10,6 +10,7 @@ package tietorakenteet_ja_algoritmit.btree;
  * @author kamaj
  */
 public class Node {
+    int value;
     private String data;
     private BinaryTree left;
     private BinaryTree right;
@@ -20,6 +21,7 @@ public class Node {
     }
 
     public Node (String value, BinaryTree left, BinaryTree right) {
+        this.value = Integer.parseInt(value);
         data = new String(value);
         this.left = left;
         this.right = right;
@@ -27,6 +29,9 @@ public class Node {
 
     public String getData() {
         return data;
+    }
+    public void setData(String data) {
+        this.data = data;
     }
     public BinaryTree left() {
         return left;
