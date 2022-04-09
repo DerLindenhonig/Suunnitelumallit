@@ -84,7 +84,8 @@ public class BinaryTree {
             }
             /* The node has two children */
             else if(bt.root.left() != null && bt.root.right() != null) {
-                BinaryTree predecessor = maxValue(bt.root.left());
+                BinaryTree predecessor = Predecessor(bt);
+                //BinaryTree predecessor = maxValue(bt.root.left());
                 bt.root.setData(predecessor.root.getData());
                 bt.setLeft(delete(bt.root.left(), Integer.parseInt(predecessor.root.getData())));
             }
@@ -100,6 +101,10 @@ public class BinaryTree {
             }
         }
         return null;
+    }
+
+    public BinaryTree Predecessor(BinaryTree bt) {
+        return maxValue(bt.root.left());
     }
 
     public BinaryTree maxValue(BinaryTree btree){
