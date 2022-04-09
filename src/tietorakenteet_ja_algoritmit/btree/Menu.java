@@ -79,7 +79,7 @@ public class Menu {
                         case '5':
                             System.out.println("Anna poistuvan solmun avain (merkkijono)");
                             data = Lue.rivi();
-                            tree.delete(Integer.parseInt(data));
+                            tree.delete(tree, Integer.parseInt(data));
                         case '6':
                             break;
                         }

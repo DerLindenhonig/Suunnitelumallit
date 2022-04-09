@@ -64,47 +64,48 @@ public class BinaryTree {
         }
     }
 
-    public BinaryTree delete(int key) {
+    public BinaryTree delete(BinaryTree bt, int key) {
         /* Tree is empty */
-        if(root == null)
+        if(bt == null)
             return null;
         /* Moves left */
-        if(Integer.parseInt(root.getData()) > key) {
-            root.left().delete(key);
+        if(Integer.parseInt(bt.root.getData()) > key) {
+            bt.root.left().delete(bt.root.left(), key);
         }
         /* Moves right */
-        else if(Integer.parseInt(root.getData()) < key) {
-            root.right().delete(key);
+        else if(Integer.parseInt(bt.root.getData()) < key) {
+            bt.root.right().delete(bt.root.right(), key);
         }
         /* Found the target */
         else {
             /* Remove leave from the tree */
-            if(root.left() == null && root.right() == null) {
-                root = null;
+            if(bt.root.left() == null && bt.root.right() == null) {
+                bt.root = null;
             }
-            /* The node has two children: delete the largest value */
-            else if(root.left() != null && root.right() != null) {
-                BinaryTree predecessor = maxValue(root.left());
-                root.setData(predecessor.root.getData());
-                root.setLeft(delete(Integer.parseInt(predecessor.root.getData())));
+            /* The node has two children */
+            else if(bt.root.left() != null && bt.root.right() != null) {
+                BinaryTree predecessor = maxValue(bt.root.left());
+                bt.root.setData(predecessor.root.getData());
+                bt.setLeft(delete(bt.root.left(), Integer.parseInt(predecessor.root.getData())));
             }
             /* The node has one child */
             else {
-                BinaryTree btree;
-                if(root.left() != null) {
-                    btree = root.left();
+                BinaryTree btr;
+                if(bt.root.left() != null) {
+                    btr = bt.root.left();
                 } else {
-                    btree = root.right();
+                    btr = bt.root.right();
                 }
-                root = btree.root;
+                bt.root = btr.root;
             }
         }
         return null;
     }
 
-    private BinaryTree maxValue(BinaryTree btree){
-        while(btree.root.left() != null){
-            btree = btree.root.left();
+    public BinaryTree maxValue(BinaryTree btree){
+        if(btree.root.right() != null){
+            btree = btree.root.right();
+            System.out.println("btree.root.right() " + btree.root.right());
         }
         return btree;
     }
