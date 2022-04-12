@@ -31,4 +31,8 @@ public class StateC extends State {
     public void accept(IVisitor visitor) {
         visitor.visit(this);
     }
+
+    public void bonus() {
+        System.out.println("\nYou get bonus!");
+    }
 }
