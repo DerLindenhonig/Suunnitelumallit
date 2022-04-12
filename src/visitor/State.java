@@ -12,4 +12,6 @@ abstract class State {
         c.changeState(s);
     }
     void accept(IVisitor v) {}
+
+    void bonus() {}
 }
