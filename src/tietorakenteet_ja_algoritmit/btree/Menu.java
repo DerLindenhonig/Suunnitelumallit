@@ -29,7 +29,8 @@ public class Menu {
                         System.out.println("\t\t\t3. Käy puu läpi esijärjestyksessä.");
                         System.out.println("\t\t\t4. Etsi solmu avaimella ");
                         System.out.println("\t\t\t5. Poista solmu avaimella ");
-                        System.out.println("\t\t\t6. lopetus ");
+                        System.out.println("\t\t\t6. Puun korkeus ");
+                        System.out.println("\t\t\t7. Lopetus ");
                         System.out.print("\n\n"); // tehdään tyhjiä rivejä
                         select = Lue.merkki();
                         switch (select) {
@@ -81,10 +82,16 @@ public class Menu {
                             data = Lue.rivi();
                             tree.delete(tree, Integer.parseInt(data));
                         case '6':
+                            if(tree != null) {
+                                System.out.println(tree.height(tree));
+                            } else {
+                                System.out.println("Puu on tyhjä");
+                            }
+                        case '7':
                             break;
                         }
                 }
-                while (select != '6');
+                while (select != '7');
         }
 //printMenu loppuu ----------------------------------------------------------------
 }

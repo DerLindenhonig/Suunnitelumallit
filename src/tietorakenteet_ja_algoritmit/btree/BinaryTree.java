@@ -64,54 +64,71 @@ public class BinaryTree {
         }
     }
 
-    public BinaryTree delete(BinaryTree bt, int key) {
+    public BinaryTree delete(BinaryTree temp, int key) {
         /* Tree is empty */
-        if(bt == null)
+        if(temp == null)
             return null;
         /* Moves left */
-        if(Integer.parseInt(bt.root.getData()) > key) {
-            bt.root.left().delete(bt.root.left(), key);
+        if(Integer.parseInt(temp.root.getData()) > key) {
+            temp.root.left().delete(temp.root.left(), key);
         }
         /* Moves right */
-        else if(Integer.parseInt(bt.root.getData()) < key) {
-            bt.root.right().delete(bt.root.right(), key);
+        else if(Integer.parseInt(temp.root.getData()) < key) {
+            temp.root.right().delete(temp.root.right(), key);
         }
         /* Found the target */
         else {
             /* Remove leave from the tree */
-            if(bt.root.left() == null && bt.root.right() == null) {
-                bt.root = null;
+            if(temp.root.left() == null && temp.root.right() == null) {
+                temp.root = null;
             }
             /* The node has two children */
-            else if(bt.root.left() != null && bt.root.right() != null) {
-                BinaryTree predecessor = Predecessor(bt);
-                bt.root.setData(predecessor.root.getData());
-                bt.setLeft(delete(bt.root.left(), Integer.parseInt(predecessor.root.getData())));
+            else if(temp.root.left() != null && temp.root.right() != null) {
+                BinaryTree predecessor = Predecessor(temp);
+                temp.root.setData(predecessor.root.getData());
+                temp.setLeft(delete(temp.root.left(), Integer.parseInt(predecessor.root.getData())));
             }
             /* The node has one child */
             else {
                 BinaryTree btr;
-                if(bt.root.left() != null) {
-                    btr = bt.root.left();
+                if(temp.root.left() != null) {
+                    btr = temp.root.left();
                 } else {
-                    btr = bt.root.right();
+                    btr = temp.root.right();
                 }
-                bt.root = btr.root;
+                temp.root = btr.root;
             }
         }
         return null;
     }
 
-    public BinaryTree Predecessor(BinaryTree bt) {
-        return maxValue(bt.root.left());
+    public BinaryTree Predecessor(BinaryTree temp) {
+        return maxValue(temp.root.left());
     }
 
     public BinaryTree maxValue(BinaryTree btree){
         if(btree.root.right() != null){
             btree = btree.root.right();
-            System.out.println("btree.root.right() " + btree.root.right());
         }
         return btree;
+    }
+
+    public int height(BinaryTree temp) {
+        if (temp == null) {
+            return 0;
+        } else {
+            int leftHeight = 0, rightHeight = 0;
+
+            if(temp.root.left() != null)
+                leftHeight = height(temp.root.left());
+
+            if(temp.root.right() != null)
+                rightHeight = height(temp.root.right());
+
+            int max = (leftHeight > rightHeight) ? leftHeight : rightHeight;
+
+            return (max + 1);
+        }
     }
 
     public void preOrder() {
