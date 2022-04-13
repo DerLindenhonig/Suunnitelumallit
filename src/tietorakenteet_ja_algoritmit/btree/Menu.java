@@ -77,6 +77,7 @@ public class Menu {
                             if(tree.search(Integer.parseInt(data)) != null) {
                                 System.out.println("Avain " + data + " löytyy");
                             } else System.out.println("Avainta " + data + " ei löydy");
+                            break;
                         case '5':
                             System.out.println("Anna poistuvan solmun avain (merkkijono)");
                             data = Lue.rivi();

@@ -121,15 +121,19 @@ public class BinaryTree {
 
             if(temp.root.left() != null) {
                 leftHeight = height(temp.root.left());
-            } else leftHeight = 0;
+            } else {
+                leftHeight = 0;
+            }
 
             if(temp.root.right() != null) {
                 rightHeight = height(temp.root.right());
-            } else rightHeight = 0;
+            } else {
+                rightHeight = 0;
+            }
 
-            int max = (leftHeight > rightHeight) ? leftHeight : rightHeight;
+            int h = (leftHeight > rightHeight) ? leftHeight : rightHeight;
 
-            return (max + 1);
+            return (h + 1);
         }
     }
 
@@ -145,7 +149,6 @@ public class BinaryTree {
 
     // löydetty alipuu asetetaan staattiseen muuttujaan found
     public void findWithPreOrder() {
-
         if (root != null) {
             System.out.print(root.getData()+ ": muokkaatko tätä? (k/e)");
             if (root.left()== null)
