@@ -80,13 +80,19 @@ public class Menu {
                         case '5':
                             System.out.println("Anna poistuvan solmun avain (merkkijono)");
                             data = Lue.rivi();
-                            tree.delete(tree, Integer.parseInt(data));
-                        case '6':
                             if(tree != null) {
-                                System.out.println(tree.height(tree));
+                                tree.delete(tree, Integer.parseInt(data));
                             } else {
                                 System.out.println("Puu on tyhjä");
                             }
+                            break;
+                        case '6':
+                            if(tree == null) {
+                                System.out.println(0);
+                            } else {
+                                System.out.println(tree.height(tree));
+                            }
+                            break;
                         case '7':
                             break;
                         }

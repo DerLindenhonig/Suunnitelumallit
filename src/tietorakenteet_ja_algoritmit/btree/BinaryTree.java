@@ -114,16 +114,18 @@ public class BinaryTree {
     }
 
     public int height(BinaryTree temp) {
-        if (temp == null) {
+        if (temp.root == null) {
             return 0;
         } else {
             int leftHeight = 0, rightHeight = 0;
 
-            if(temp.root.left() != null)
+            if(temp.root.left() != null) {
                 leftHeight = height(temp.root.left());
+            } else leftHeight = 0;
 
-            if(temp.root.right() != null)
+            if(temp.root.right() != null) {
                 rightHeight = height(temp.root.right());
+            } else rightHeight = 0;
 
             int max = (leftHeight > rightHeight) ? leftHeight : rightHeight;
 
