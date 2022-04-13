@@ -1,9 +1,9 @@
 package builder.burgers;
 
-import builder.osat.Bun;
-import builder.osat.BurgerPart;
-import builder.osat.Patty;
-import builder.osat.Sauce;
+import builder.parts.Bun;
+import builder.parts.BurgerPart;
+import builder.parts.Patty;
+import builder.parts.Sauce;
 
 import java.util.ArrayList;
 

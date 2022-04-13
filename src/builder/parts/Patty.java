@@ -1,4 +1,4 @@
-package builder.osat;
+package builder.parts;
 
 public class Patty implements BurgerPart {
     @Override

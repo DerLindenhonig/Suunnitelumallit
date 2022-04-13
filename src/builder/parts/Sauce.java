@@ -1,4 +1,4 @@
-package builder.osat;
+package builder.parts;
 
 public class Sauce implements BurgerPart {
     @Override
