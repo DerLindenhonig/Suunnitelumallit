@@ -25,10 +25,9 @@ public class BinarySearch {
     }
 
     public int[] insert(int data) {
-        // Tarkista löytyykö data taulusta
         if (search(data) != true) {
             System.out.println("Lisätään " + data + " tauluun.");
-            insertAlgorithm(nodes.length, data, nodes.length);
+            insertAlgorithm(nodes.length, data);
             return nodes;
         } else {
             System.out.println(data + " ei ollut lisätty tauluun.");
@@ -36,7 +35,7 @@ public class BinarySearch {
         return nodes;
     }
 
-    private int[] insertAlgorithm(int nodesCount, int data, int nodesLength) {
+    private int[] insertAlgorithm(int nodesCount, int data) {
         // Tehdään nodes-taulun kopio
         int nodesCopy[] = Arrays.copyOf(nodes, length + 1);
 
@@ -59,7 +58,7 @@ public class BinarySearch {
         } else if (nodes.length > 1) {
             int node = searchAlgorithm(nodes, data, 0, nodes.length - 1);
             if (node == -1) {
-                System.out.println("Node " + node + " ei löydy taulusta.");
+                System.out.println("Node " + data + " ei löydy taulusta.");
                 return false;
             } else {
                 System.out.println("Node löytyy taulusta " + node + " indeksillä.");
