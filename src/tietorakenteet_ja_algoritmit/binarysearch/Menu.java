@@ -22,7 +22,7 @@ public class Menu {
                 char select, select1;
                 BinarySearch tree = null, upDated = null;
                 String data;
-                int nodes[] = {2, 4, 7, 10, 40};
+                int nodes[] = {};
                 do {
                         System.out.println("\n\t\t\t1. Lisää uusi juuri/solmu."); // Lisää avain
                         System.out.println("\t\t\t2. Tulosta solmut suuruusjärjestyksessä.");

@@ -27,11 +27,11 @@ public class BinarySearch {
     public int[] insert(int data) {
         // Tarkista löytyykö data taulusta
         if (search(data) != true) {
-            System.out.println("Lisätään " + data + " tauluun");
+            System.out.println("Lisätään " + data + " tauluun.");
             insertAlgorithm(nodes.length, data, nodes.length);
             return nodes;
         } else {
-            System.out.println(data + " ei ollut lisätty tauluun");
+            System.out.println(data + " ei ollut lisätty tauluun.");
         }
         return nodes;
     }
@@ -39,11 +39,13 @@ public class BinarySearch {
     private int[] insertAlgorithm(int nodesCount, int data, int nodesLength) {
         // Tehdään nodes-taulun kopio
         int nodesCopy[] = Arrays.copyOf(nodes, length + 1);
+
         // Kopioidaan alkiot, jotka tulevat lisätyn alkion jälkeen
         int i;
         for (i = nodesCount - 1; (i >= 0 && nodesCopy[i] > data); i--) {
             nodesCopy[i + 1] = nodesCopy[i];
         }
+
         // Sijoitetaan alkio
         nodesCopy[i + 1] = data;
         nodes = nodesCopy;
@@ -56,11 +58,11 @@ public class BinarySearch {
             return false;
         } else if (nodes.length > 1) {
             int node = searchAlgorithm(nodes, data, 0, nodes.length - 1);
-            if (node == 0) {
-                System.out.println("Node " + node + " ei löydy taulusta");
+            if (node == -1) {
+                System.out.println("Node " + node + " ei löydy taulusta.");
                 return false;
             } else {
-                System.out.println("Node löytyy taulusta " + node + " indeksillä");
+                System.out.println("Node löytyy taulusta " + node + " indeksillä.");
                 return true;
             }
         }
@@ -82,6 +84,6 @@ public class BinarySearch {
             // Alkio on > avain, alkio löytyy oikealta
             return searchAlgorithm(nodes, key, mid + 1, last);
         }
-        return 0;
+        return -1;
     }
 }
