@@ -24,7 +24,7 @@ public class Asiakas extends Thread {
         return nimi;
     }
 
-    public synchronized boolean arvaaLuku(Arvuuttaja arvuuttaja) {
+    public boolean arvaaLuku(Arvuuttaja arvuuttaja) {
         Random rand = new Random();
         int luku = rand.nextInt(9) + 1;
 
