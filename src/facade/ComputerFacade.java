@@ -16,7 +16,7 @@ public class ComputerFacade {
     int kSectorSize;
 
     public ComputerFacade() {
-        this.kBootAddress = 8000;
+        this.kBootAddress = 0;
         this.kBootSector = 0;
         this.kSectorSize = 512;
     }

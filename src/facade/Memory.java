@@ -10,7 +10,7 @@ public class Memory {
     }
 
     public void load(int position, char[] data) {
-        System.out.println("\nTallentaa (lataa) data: " + Arrays.toString(data)+ " muistiin: " + position);
+        System.out.println("\nTallentaa (lataa) data: " + Arrays.toString(data) + " muistiin: " + position);
 
         for (int i = position; i < data.length; i++) {
             memoryArr[i] = data[i];
